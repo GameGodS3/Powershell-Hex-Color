@@ -1,4 +1,4 @@
-# PowerShell Colourizer
+# PowerShell Colorizer
 
 Windows Powershell is the strongest shell in the Windows Operating System and yet it is limited from customisation and colours due to its definite 16 colour values.
 
