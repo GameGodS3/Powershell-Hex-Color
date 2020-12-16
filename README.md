@@ -6,4 +6,4 @@ This script makes it easier for you to add custom colours to the PowerShell colo
 
 Simply download __hexadjust.ps1__ and run it (by double clicking or by executing it within PowerShell)
 
-##### Minor snippets of code borrowed from https://www.leeholmes.com/blog/2008/06/01/powershells-noble-blue/
+###### Minor snippets of code borrowed from https://www.leeholmes.com/blog/2008/06/01/powershells-noble-blue/
