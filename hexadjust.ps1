@@ -3,11 +3,15 @@
 # https://github.com/GameGodS3/Powershell-Colorizer
 # -------------------------------------------------+
 
-﻿$CWD = Get-Location #To save the current location and return back to the folder after completion of script
+$cwd = Get-Location #To save the current location and return back to the folder after completion of script
 
 
-"Set Custom Colors for you Powershell color table"
-"------------------------------------------------"
+Write-Host "------------------------------------------------" -ForegroundColor "Yellow"
+Write-Host "--           PowerShell-Colorizer             --" -ForegroundColor "Yellow"
+Write-Host "------------------------------------------------" -ForegroundColor "Yellow"
+Write-Host "------------------------------------------------" -ForegroundColor "Yellow"
+Write-Host "                By GameGodS3                    " -ForegroundColor "Yellow"
+Write-Host "------------------------------------------------" -ForegroundColor "Yellow"
 " "
 "Your Current Colour Palette:"
 $colors = [enum]::GetValues([System.ConsoleColor])
@@ -15,7 +19,11 @@ Foreach ($bgcolor in $colors){
     $index = [array]::IndexOf($colors, $bgcolor)
     Write-Host " " -NoNewLine
     Write-Host "__"  -ForegroundColor $bgcolor -BackgroundColor $bgcolor -NoNewLine
-    Write-Host "$index " -NoNewLine
+}
+" "
+for ($i = 0; $i -lt 16; $i++) {
+    if ($i -lt 10){Write-Host " 0$i" -NoNewLine} 
+    else{Write-Host " $i" -NoNewLine} 
 }
 " "
 " "
@@ -131,7 +139,7 @@ try {
     }
 }
 finally {
-    Set-Location $CWD
+    Set-Location $cwd
     Write-Host "Exiting Script. Restart Powershell to take effect." -ForegroundColor "Yellow"
     Pause
 }
