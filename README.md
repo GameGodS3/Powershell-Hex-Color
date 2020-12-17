@@ -10,6 +10,8 @@ Windows PowerShell is the strongest shell in the Windows Operating System and ye
 
 PowerShell Colorizer makes it easier to change the colours of the default color palette. Simply enter the Hex Value of the colour you want to add.
 
+__Note: Script only works for PowerShell in Windows. Not even in PowerShell for Linux__
+
 ![PowerShell-Colorizer](./img/Colorizer.png)
 
 ## Prerequisites
