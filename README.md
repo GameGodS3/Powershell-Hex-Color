@@ -1,4 +1,4 @@
-# PowerShell Colorizer
+# PowerShell Hex Color
 
 ## Table of Contents
 - [About](#about)
@@ -8,7 +8,7 @@
 ## About
 Windows PowerShell is the strongest shell in the Windows Operating System and yet it is limited from customisation and colours due to its definite 16 colour values.
 
-PowerShell Colorizer makes it easier to change the colours of the default color palette. Simply enter the Hex Value of the colour you want to add.
+PowerShell Hex Color makes it easier to change the colours of the default color palette. Simply enter the Hex Value of the colour you want to add.
 
 __Note: Script only works for PowerShell in Windows. Not even in PowerShell for Linux__
 
