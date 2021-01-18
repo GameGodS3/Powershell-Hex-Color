@@ -41,17 +41,16 @@ Simply download __hexadjust.ps1__ and save it in any folder of your liking.
 
 ## Usage
 
-You can run hexadjust.ps1 simply by double-clicking it's icon, or navigating to its folder in PowerShell and executing `.\hexadjust.ps1`. This will walk you through the interactive session to set the colours.
+You can run hexadjust.ps1 simply by double-clicking it's icon, or navigating to its folder in PowerShell and executing `.\hexadjust.ps1`. This will walk you through the interactive session to set the colors.
 
-Additionally, (if you are aware of the Index Value you wish to change and the color value) you could also directly set custom colors by simply passing it as an inline argument within PowerShell
+Additionally, (if you know the index value you wish to change and the color value) you could also directly set custom colors by simply passing it as an inline argument within PowerShell
 ```
-.\hexadjust.ps1 -index [index number from 0 to 15] -colorvalue [hexvalue without the #]
+.\hexadjust.ps1 -index [index number between 0 & 15] -colorvalue [hexvalue without the #]
 ```
 
 
 ### Contributions are always welcome :)
 
 
----
 ---
 ###### Minor snippets of code borrowed from https://www.leeholmes.com/blog/2008/06/01/powershells-noble-blue/
