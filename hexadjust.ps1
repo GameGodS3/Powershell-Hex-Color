@@ -3,9 +3,15 @@
 # https://github.com/GameGodS3/Powershell-Colorizer
 # -------------------------------------------------+
 
+#PowerShell requires parameters/flags and global variables to be called as first command
+
+param ($index, $colorvalue)
+$global:globindex = $index
+$global:globcolor = $colorvalue
+
 $cwd = Get-Location #To save the current location and return back to the folder after completion of script
 
-
+cls
 Write-Host "------------------------------------------------" -ForegroundColor "Yellow"
 Write-Host "--           PowerShell-Colorizer             --" -ForegroundColor "Yellow"
 Write-Host "------------------------------------------------" -ForegroundColor "Yellow"
@@ -16,7 +22,7 @@ Write-Host "------------------------------------------------" -ForegroundColor "
 "Your Current Colour Palette:"
 $colors = [enum]::GetValues([System.ConsoleColor])
 Foreach ($bgcolor in $colors){
-    $index = [array]::IndexOf($colors, $bgcolor)
+    $colorarray = [array]::IndexOf($colors, $bgcolor)
     Write-Host " " -NoNewLine
     Write-Host "__"  -ForegroundColor $bgcolor -BackgroundColor $bgcolor -NoNewLine
 }
@@ -70,17 +76,27 @@ function ResetDefault {
     "------------------------------------------------"
 }
 
-function CustomColor {
-    $indexvalue = 100
+function CustomColor([REF]$globindex, [REF]$globcolor) {
+    if ($globindex.Value -ne $null){
+        $indexvalue = $globindex.Value
+    }
+    else{
+        $indexvalue = 100
+    }
     while ($indexvalue -gt 15) {
         [int]$indexvalue = Read-Host -Prompt "Enter index value of color (0-15) to be changed in the color table"
         if ($indexvalue -gt 15) {
             Write-Host "Index out of range. Enter Valid Index." -ForegroundColor "Red"
-        }
+        }        
     }
 
+    if ($globindex.Value -ne $null){
+        $hexvalue = $globcolor.Value
+    }
+    else{
+       $hexvalue = Read-Host -Prompt "Enter Hex Value of color to be input(without #)"
+    }
     
-    $hexvalue = Read-Host -Prompt "Enter Hex Value of color to be input(without #)"
     $hexarray = $hexvalue.ToCharArray()
     while ($hexarray.length -ne 6) {
         Write-Host "Hex value length incorrect. Try Again" -ForegroundColor "Red"
@@ -118,6 +134,27 @@ function CustomColor {
     "---------------------------------------"
 }
 
+
+#Function calls if parameters/flags are given inline
+if ($index -ne $null -and $colorvalue -ne $null){
+try{
+   CustomColor ([REF]$global:globindex) ([REF]$global:globcolor)
+}  
+finally{ 
+   Set-Location $cwd
+   Exit
+}
+}
+elseif($index -eq $null -and $colorvalue -ne $null){
+    Write-Host "Index Parameter missing. Executing Script normally" -ForegroundColor "Red"
+    " "
+}
+elseif($index -ne $null -and $colorvalue -eq $null){
+    Write-Host "ColorValue Parameter missing. Executing Script normally" -ForegroundColor "Red"
+    " "
+}
+
+#Prompt if script is called without flags
 try {
     "(1) Set Custom Color"
     "(2) Reset to Default Color Settings"
@@ -126,7 +163,7 @@ try {
     $switch = Read-Host -Prompt "Choose from above options"
 
     if ($switch -eq 1) {
-        CustomColor
+        CustomColor ([REF]$global:globindex) ([REF]$global:globcolor)
     }
     elseif ($switch -eq 2) {
         ResetDefault

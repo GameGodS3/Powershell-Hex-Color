@@ -4,6 +4,7 @@
 - [About](#about)
 - [Prerequisites](#prerequisites)
 - [Installation](#installation)
+- [Usage](#usage)
 
 ## About
 Windows PowerShell is the strongest shell in the Windows Operating System and yet it is limited from customisation and colours due to its definite 16 colour values.
@@ -35,8 +36,22 @@ Windows Powershell:
 
 OR
 
-Simply download __hexadjust.ps1__ and run it (by double clicking or by executing it within PowerShell)
+Simply download __hexadjust.ps1__ and save it in any folder of your liking. 
 
 
+## Usage
+
+You can run hexadjust.ps1 simply by double-clicking it's icon, or navigating to its folder in PowerShell and executing `.\hexadjust.ps1`. This will walk you through the interactive session to set the colours.
+
+Additionally, (if you are aware of the Index Value you wish to change and the color value) you could also directly set custom colors by simply passing it as an inline argument within PowerShell
+```
+.\hexadjust.ps1 -index [index number from 0 to 15] -colorvalue [hexvalue without the #]
+```
+
+
+### Contributions are always welcome :)
+
+
+---
 ---
 ###### Minor snippets of code borrowed from https://www.leeholmes.com/blog/2008/06/01/powershells-noble-blue/
