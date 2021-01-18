@@ -26,6 +26,15 @@ Set-ExecutionPolicy -RemoteSigned -Scope CurrentUser
 
 ## Installation
 
+
+Windows Powershell:
+```powershell
+    iwr -useb https://raw.githubusercontent.com/GameGodS3/Powershell-Hex-Color/main/hexadjust.ps1 |`
+     ni ./hexadjust.ps1 -Force
+```
+
+OR
+
 Simply download __hexadjust.ps1__ and run it (by double clicking or by executing it within PowerShell)
 
 
