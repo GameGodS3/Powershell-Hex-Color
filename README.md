@@ -17,7 +17,7 @@ __Note: Script only works for PowerShell in Windows. Not even in PowerShell for 
 ## Prerequisites
 - Execution Policy for RemoteSigned PS Scripts must be enabled.
 ```powershell
-Set-ExecutionPolicy -RemoteSigned -Scope CurrentUser
+Set-ExecutionPolicy RemoteSigned -Scope CurrentUser
 ```
 
 - Rarely, if there's a security block when the script is downloaded, it has to be unblocked from the properties of the script.
