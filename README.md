@@ -5,6 +5,7 @@
 - [Prerequisites](#prerequisites)
 - [Installation](#installation)
 - [Usage](#usage)
+- [Themes](#themes)
 
 ## About
 Windows PowerShell is the strongest shell in the Windows Operating System and yet it is limited from customisation and colours due to its definite 16 colour values.
@@ -31,7 +32,7 @@ Set-ExecutionPolicy RemoteSigned -Scope CurrentUser
 Windows Powershell:
 ```powershell
     iwr -useb https://raw.githubusercontent.com/GameGodS3/Powershell-Hex-Color/main/hexadjust.ps1 |`
-     ni ./hexadjust.ps1 -Force
+     ni $HOME/Documents/WindowsPowerShell/hexadjust.ps1 -Force
 ```
 
 OR
@@ -47,6 +48,18 @@ Additionally, (if you know the index value you wish to change and the color valu
 ```
 .\hexadjust.ps1 -index [index number between 0 & 15] -colorvalue [hexvalue without the #]
 ```
+
+## Themes (BETA)
+Settings themes with Hex-Color is a feature in development.
+
+Execute `hexadjust.ps1` and choose the 3rd option. Follow the prompt to set the custom color palette.
+
+Once custom color palettes have been set, user will have to manually choose them in the `Properties > Color` menu of PowerShell.
+
+1) CodeTheme
+
+For this, once you have set the theme using hexadjust, go to `Properties > Color` and choose Background Color to be the 1st color, and foreground color to be the 10th color. Then execute `cls` and the color scheme must have gotten applied.
+![CodeTheme](./img/codetheme.png)
 
 
 ### Contributions are always welcome :)

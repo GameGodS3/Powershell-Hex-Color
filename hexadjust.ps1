@@ -46,7 +46,7 @@ catch {
 
 
 function ResetDefault {
-    $confirm = Read-Host -Prompt "Are you sure you wish to reset to default config?(y/n)"
+    $confirm = Read-Host -Prompt "Are you sure you wish to reset to default config?(Y/n)"
     if ( $confirm -eq "n" -or $confirm -eq "N"){
         Write-Host "Cacelling operation." -ForegroundColor "Yellow"
         return
@@ -76,7 +76,7 @@ function ResetDefault {
     "------------------------------------------------"
 }
 
-function CustomColor([REF]$globindex, [REF]$globcolor) {
+function Set-CustomColor([REF]$globindex, [REF]$globcolor) {
     if ($globindex.Value -ne $null){
         $indexvalue = $globindex.Value
     }
@@ -95,6 +95,12 @@ function CustomColor([REF]$globindex, [REF]$globcolor) {
     }
     else{
        $hexvalue = Read-Host -Prompt "Enter Hex Value of color to be input(without #)"
+    Write-Host "You have chosen #$hexvalue as Color for Table Index $indexvalue." -ForegroundColor "Green"
+        $confirm = Read-Host -Prompt "Confirm?(Y/n)"
+        if ( $confirm -eq "n" -or $confirm -eq "N"){
+            Write-Host "Cacelling operation." -ForegroundColor "Yellow"
+            return
+        }
     }
     
     $hexarray = $hexvalue.ToCharArray()
@@ -115,12 +121,7 @@ function CustomColor([REF]$globindex, [REF]$globcolor) {
     if ($indexvalue -lt 10){[string]$indexvalue = "0$indexvalue"}
     else{$indexvalue = [string]"$indexvalue"}
 
-    Write-Host "You have chosen #$hexvalue as Color for Table Index $indexvalue." -ForegroundColor "Green"
-    $confirm = Read-Host -Prompt "Confirm?(n for no. Any other key for yes)"
-    if ( $confirm -eq "n" -or $confirm -eq "N"){
-        Write-Host "Cacelling operation." -ForegroundColor "Yellow"
-        return
-    }
+    
 
     try {
         New-ItemProperty . ColorTable$indexvalue -type DWORD -value $hexstring -ErrorAction Stop
@@ -133,12 +134,24 @@ function CustomColor([REF]$globindex, [REF]$globcolor) {
     Write-Host "ColorTable$indexvalue set to $hexvalue successfully" -ForegroundColor "Green"
     "---------------------------------------"
 }
+function Set-HexTheme(){
+    "Available Themes: "
+    "(1) CodeTheme"
+
+    $themenum = Read-Host -Prompt "Choose theme number"
+    if ($themenum -eq 1){
+        . "$PSScriptRoot\CodeTheme.ps1"
+    }
+    "------------------------------------------------"
+    Write-Host "           Theme Set to Theme Number: $themenum           " -ForegroundColor "Green"
+    "------------------------------------------------"
+}
 
 
 #Function calls if parameters/flags are given inline
 if ($index -ne $null -and $colorvalue -ne $null){
 try{
-   CustomColor ([REF]$global:globindex) ([REF]$global:globcolor)
+   Set-CustomColor ([REF]$global:globindex) ([REF]$global:globcolor)
 }  
 finally{ 
    Set-Location $cwd
@@ -158,15 +171,19 @@ elseif($index -ne $null -and $colorvalue -eq $null){
 try {
     "(1) Set Custom Color"
     "(2) Reset to Default Color Settings"
+    "(3) Set Custom Themes"
     "(q) Exit"
     " "
     $switch = Read-Host -Prompt "Choose from above options"
 
     if ($switch -eq 1) {
-        CustomColor ([REF]$global:globindex) ([REF]$global:globcolor)
+        Set-CustomColor ([REF]$global:globindex) ([REF]$global:globcolor)
     }
     elseif ($switch -eq 2) {
         ResetDefault
+    }
+    elseif ($switch -eq 3) {
+        Set-HexTheme
     }
     elseif ($switch -eq "q" -or $switch -eq "Q") {
         Exit
