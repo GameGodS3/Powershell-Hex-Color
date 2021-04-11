@@ -1,5 +1,10 @@
 # PowerShell Hex Color
 
+
+![License](https://img.shields.io/github/license/GameGodS3/Powershell-Hex-Color?style=flat-square)
+![GitHub repo size](https://img.shields.io/github/repo-size/gamegods3/powershell-hex-color?color=red&style=flat-square)
+![Language](https://img.shields.io/github/languages/top/gamegods3/powershell-hex-color?style=flat-square)
+
 ## Table of Contents
 - [About](#about)
 - [Prerequisites](#prerequisites)
